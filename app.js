@@ -1,4 +1,3 @@
-
 const btn = document.querySelector('button');
 const goalsOutput = document.querySelector('.goals');
 
@@ -6,7 +5,17 @@ const goalsOutput = document.querySelector('.goals');
 btn.addEventListener('click', test);
 
 function test(){
-    const teamInput = document.querySelector('.teamname').value;
+    let teamInput = document.querySelector('.teamname').value;
+    //Debugging for correct inputs
+    //get rid of spaces
+    teamInput = teamInput.toLowerCase().split(' ');
+    if(teamInput.includes('united') === true){
+        teamInput[teamInput.length - 1] = 'utd';
+    }
+    teamInput = teamInput.join('')
+    //lowercase
+    console.log(teamInput);
+    
     xhr = new XMLHttpRequest
     xhr.open('GET', 'https://s3.eu-west-1.amazonaws.com/hackajob-assets1.p.hackajob/challenges/football_session/football.json', false);
     
